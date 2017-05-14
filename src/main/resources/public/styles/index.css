@@ -1,0 +1,331 @@
+/* Global layout */
+
+/* styles needed to have a responsive fixed footer
+     while having main content (with content class) taking up all available space */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+/* Menu */
+
+/* Prevent FOUC : http://foundation.zurb.com/sites/docs/responsive-navigation.html#preventing-fouc */
+.no-js .top-bar {
+    display: none;
+}
+
+@media screen and (min-width: 40em) {
+    .no-js .top-bar {
+        display: block;
+    }
+
+    .no-js .title-bar {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .logo {
+        display: block;
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 60em) {
+    .logo {
+        display: none;
+    }
+}
+
+/* Some little hacks to have the login button on the right on mobile devices */
+
+p#login-small {
+    margin-bottom: 0;
+}
+
+p#login-small .button {
+    margin-bottom: 0;
+    padding: 0.45em 0.5em;
+}
+
+@media screen and (max-width: 40em) {
+    .top-bar-title {
+        flex: 1 0 auto !important;
+        margin-right: 0 !important;
+    }
+}
+
+#uca-menu li a.active {
+    background-color: #007ea1;
+    color: #fff;
+}
+
+.uca-userinfo {
+    margin-right: 0.5em;
+    font-size: smaller;
+}
+
+/* Header */
+
+.header {
+    background-color: #007ea1;
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Search */
+
+.uca-global-search-filters {
+    display: flex;
+}
+
+@media screen and (max-width: 40em) {
+    .uca-global-search-filters {
+        flex-direction: column;
+    }
+}
+
+.uca-search-category h2 {
+    border-bottom: 1px solid #007EA1;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: #007EA1;
+    font-size: 2rem;
+}
+
+.uca-search-category .header-search-category {
+    border-bottom: 1px solid #007EA1;
+    margin-bottom: 1rem;
+}
+
+.uca-search-category .header-search-category h2 {
+    border-bottom: none;
+    margin-bottom: 0;
+    margin-top: 1rem;
+    color: #007EA1;
+    font-size: 2rem;
+}
+
+.uca-search-category .header-search-category input {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.uca-search-category .header-search-category button {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.uca-search-category-icon {
+    margin-right: 0.5rem;
+}
+
+ul.uca-search-result {
+    margin-left: 0 !important;
+}
+
+ul.uca-search-result > li {
+    border-bottom: 1px solid #cacaca;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+ul.uca-search-result > li:last-child {
+    border-bottom: none;
+}
+
+ul.uca-search-result span.uca-label {
+    margin-left: 0.5rem;
+}
+
+ul.uca-search-result p i.fi-home {
+    margin-right: 0.5rem;
+}
+
+ul.uca-search-result a.uca-dependent-structure,
+div.uca-card-details a.uca-dependent-structure {
+    margin-left: 0.5rem;
+}
+
+/* Pagination */
+
+.uca-search-results .pagination-next a:after {
+    content: '\BB';
+    margin-left: 0.5em;
+}
+
+.uca-search-results .pagination-previous a:before {
+    content: '\AB';
+    margin-right: 0.5em;
+}
+
+.uca-search-results .pagination-previous.disabled a,
+.uca-search-results .pagination-next.disabled a {
+    color: #cacaca;
+    cursor: not-allowed;
+}
+
+.uca-search-results .pagination li.current a {
+    background: #007ea1;
+    color: #fff;
+}
+
+/* Forms */
+
+.uca-search-form {
+    margin-bottom: 1em;
+}
+
+form label.required {
+    font-weight: bold;
+}
+
+form label.required:after {
+    content: ' *';
+}
+
+.react-autosuggest__container {
+    position: relative;
+}
+
+.react-autosuggest__suggestions-container {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+}
+
+.react-autosuggest__suggestions-container .react-autosuggest__suggestions-list {
+    margin-bottom: 0;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.center-vertically {
+    display: flex;
+    align-items: center;
+}
+
+/* Cards */
+
+.uca-card-title {
+    margin-bottom: 2em;
+}
+
+.uca-card-details p {
+    margin-bottom: 0.5em;
+}
+
+.uca-card-details p i, .uca-card-details div i  {
+    margin-right: 0.5em;
+}
+
+.admin-icons {
+    text-align: right;
+}
+
+/* Callouts */
+
+.callout.item {
+  background-color:#ffffff;
+  color:#000000;
+}
+
+.callout.item:hover {
+  background-color:#f0f8fa;
+}
+
+.callout.item p {
+  margin-bottom:0;
+}
+
+.callout .close-button {
+    right: 0.5rem;
+    top: 0rem;
+    font-size: 1.8em;
+}
+
+.callout.uca-action-result {
+  color: #000;
+}
+
+.callout.primary.uca-action-result {
+    color: #fff;
+}
+
+.uca-callout-success {
+    background-color: #e1faea !important;
+}
+
+.uca-callout-warning {
+    background-color: #fff3d9 !important;
+}
+
+.uca-callout-alert {
+    background-color: #fce6e2 !important;
+}
+
+/* Organizations */
+
+.uca-organization-address {
+    display: flex;
+}
+.text-editor {
+    margin-bottom: 1em;
+}
+
+/* Agents */
+
+.uca-list_item_inline:not(:last-child):after {
+    margin-right: 0.5rem;
+}
+
+.uca-social_icon {
+    margin-right: 0.5rem;
+}
+
+/* Admin import */
+
+form label.uploaded-file {
+    font-style: italic;
+    margin-left: 1rem;
+    display: inline;
+}
+
+/* Autosuggest component */
+
+div.react-autosuggest__container input {
+    margin-bottom: 0;
+}
+
+ul.react-autosuggest__suggestions-list {
+    list-style-type: none;
+    margin-left: 0;
+    border: 1px solid #cacaca;
+}
+
+ul.react-autosuggest__suggestions-list li {
+    padding: 0 0.5rem;
+    border-bottom: 1px solid #cacaca;
+}
+
+ul.react-autosuggest__suggestions-list li p {
+    margin-bottom: 0.5rem;
+}
+
+ul.react-autosuggest__suggestions-list div {
+    padding-top: 0.5rem;
+}
+
+.react-autosuggest__suggestion--focused {
+    background-color: #cacaca;
+}

@@ -1,0 +1,10 @@
+spring.profiles.active: test
+
+# MySQL configuration
+
+spring.jpa.hibernate.ddl-auto: create
+
+spring.datasource:
+  url: jdbc:mysql://localhost/cureme_test?useSSL=false
+  username: root
+  password: Volubile5!

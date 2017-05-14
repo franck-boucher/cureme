@@ -1,0 +1,9 @@
+@import 'settings.scss';
+@import 'foundation-sites/scss/foundation';
+
+// for now, include all modules from foundation
+@include foundation-everything(true);
+
+@import "index.css";
+
+//@include add-foundation-colors;

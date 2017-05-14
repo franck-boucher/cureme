@@ -1,0 +1,90 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id "com.moowork.node" version "0.11"
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'annuaire-uca'
+    version = '0.0.1'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+node {
+	version = '7.7.3'
+	npmVersion = '4.1.2'
+	download = true
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	runtime('org.springframework.boot:spring-boot-devtools')
+	runtime("mysql:mysql-connector-java")
+}
+
+bootRun {
+    addResources = true
+}
+
+springBoot {
+    // exclude Spring Boot Devtools from the fat jar
+    excludeDevtools = true
+
+    executable = true
+    embeddedLaunchScriptProperties =
+            [initInfoDescription: 'CureMe',
+             initInfoShortDescription: 'CureMe',
+             initInfoProvides: 'cureme']
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
+}
+
+configure(tasks.processResources) {
+    // we don't want source JSX in the jar, we only need their transpiled, bundled version in build/
+    exclude 'public/jsx/'
+    exclude 'public/styles/'
+}
+
+task frontBundle(type: NpmTask) {
+    args = ['run', 'build']
+    doLast {
+        copy {
+            from "${sourceSets.main.resources.srcDirs[0]}/public/build"
+            into "${sourceSets.main.output.resourcesDir}/public/build"
+        }
+    }
+}
+
+task frontStart(type: NpmTask) {
+    args = ['run', 'start']
+}
+
+jar.dependsOn(frontBundle)
+frontBundle.dependsOn(npmInstall)

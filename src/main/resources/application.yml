@@ -1,0 +1,23 @@
+# General and default configuration properties
+# Put all your local specific properties (DB password, ...) in a application-dev.yml file in the same directory
+
+# Spring Boot configuration
+
+spring:
+  output.ansi.enabled: DETECT
+  session.store-type: none
+
+server:
+  compression.enabled: true
+  port: 8080
+
+# MySQL configuration
+
+spring.jpa:
+  generate-ddl: true
+  hibernate.ddl-auto: create
+
+spring.datasource:
+  url: jdbc:mysql://localhost/cureme?useSSL=false
+  username: root
+  password: Volubile5!
